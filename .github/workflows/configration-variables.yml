@@ -1,0 +1,38 @@
+on:
+  workflow_dispatch:
+env:
+  # Setting an environment variable with the value of a configuration variable
+  env_var: ${{ vars.USER }}
+
+jobs:
+  display-variables-development:
+    runs-on: ubuntu-latest
+    environment:
+      name: development
+    steps:
+    - name: Use variables
+      run: |
+        echo "configuration variable : ${{ vars.USER }}"
+        echo "variable from shell environment : $env_var"
+
+  display-variables-staging:
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+    steps:
+    - name: Use variables
+      run: |
+        echo "configuration variable : ${{ vars.USER }}"
+        echo "variable from shell environment : $env_var"
+
+  display-variables-production:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+    steps:
+    - name: Use variables
+      run: |
+        echo "configuration variable : ${{ vars.USER }}"
+        echo "variable from shell environment : $env_var"
+
+
